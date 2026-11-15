@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "taux_detail",
+  "position": {
+    "x": 640,
+    "y": 135,
+    "z": 0,
+    "height": 640,
+    "width": 620,
+    "tabOrder": 775
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_Region"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "dim_Region.Region",
+              "nativeQueryRef": "Region"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_Categorie"
+                    }
+                  },
+                  "Property": "Categorie"
+                }
+              },
+              "queryRef": "dim_Categorie.Categorie",
+              "nativeQueryRef": "Categorie"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_recettes"
+                    }
+                  },
+                  "Property": "Lits"
+                }
+              },
+              "queryRef": "fact_recettes.Lits",
+              "nativeQueryRef": "Lits"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_recettes"
+                    }
+                  },
+                  "Property": "Taux occupation detail %"
+                }
+              },
+              "queryRef": "fact_recettes.Taux occupation detail %",
+              "nativeQueryRef": "Taux occupation detail %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Taux detailles, sans moyenne non ponderee'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

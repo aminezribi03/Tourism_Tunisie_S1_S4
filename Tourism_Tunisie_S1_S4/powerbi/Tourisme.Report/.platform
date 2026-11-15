@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Tourisme Tunisie"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "748443ad-5fea-5691-b120-4c664a664ee4"
+  }
+}

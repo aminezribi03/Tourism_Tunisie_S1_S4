@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Tourisme Tunisie"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6ed12104-4aec-51f8-bd77-6b63f3813cc6"
+  }
+}

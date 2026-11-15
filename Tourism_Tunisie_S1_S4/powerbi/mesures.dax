@@ -1,0 +1,53 @@
+// Mesures situees dans fact_recettes. Copier une mesure a la fois si necessaire.
+
+Recettes MDT =
+SUM(fact_recettes[Recettes_MDT])
+
+Recettes annee precedente =
+VAR An = SELECTEDVALUE(dim_Annee[AnneeKey])
+RETURN IF(NOT ISBLANK(An), CALCULATE([Recettes MDT], REMOVEFILTERS(dim_Annee), dim_Annee[AnneeKey] = An - 1))
+
+Variation recettes % =
+DIVIDE([Recettes MDT] - [Recettes annee precedente], [Recettes annee precedente])
+
+Arrivees =
+SUM(fact_arrivees[Arrivees])
+
+Part du marche % =
+DIVIDE([Arrivees], CALCULATE([Arrivees], REMOVEFILTERS(dim_Marche)))
+
+Nuitees =
+SUM(fact_nuitees[Nuitees])
+
+Arrivees par saison =
+SUM(fact_arrivees_saison[Arrivees])
+
+Lits =
+SUM(fact_capacite[Lits])
+
+Etablissements =
+SUM(fact_capacite[Etablissements])
+
+Investissements MDT =
+DIVIDE(SUM(fact_investissements[Total_kTND]), 1000)
+
+Visiteurs sites =
+SUM(fact_sites[Visiteurs])
+
+Taux occupation detail % =
+IF(HASONEVALUE(fact_occupation[ObservationKey]), DIVIDE(MAX(fact_occupation[Taux_pct]), 100))
+
+Occupation nationale publiee % =
+IF(ISFILTERED(dim_Region) || ISFILTERED(dim_Categorie), BLANK(), DIVIDE(CALCULATE(MAX(ref_controles_source[Valeur]), ref_controles_source[SourceFeuille] = "KPI_2023", ref_controles_source[Libelle] = "Taux occupation moyen"), 100))
+
+EUR TND moyen =
+CALCULATE(AVERAGE(fact_change[Taux_TND]), dim_Devise[Devise] = "EUR")
+
+USD TND moyen =
+CALCULATE(AVERAGE(fact_change[Taux_TND]), dim_Devise[Devise] = "USD")
+
+Recettes MEUR estimees =
+SUMX(fact_recettes, VAR MoisCourant = fact_recettes[MoisKey] VAR Taux = CALCULATE(MAX(fact_change[Taux_TND]), dim_Devise[Devise] = "EUR", fact_change[MoisKey] = MoisCourant) RETURN DIVIDE(fact_recettes[Recettes_MDT], Taux))
+
+Previsions MDT =
+SUM(fact_previsions[Valeur_MDT])

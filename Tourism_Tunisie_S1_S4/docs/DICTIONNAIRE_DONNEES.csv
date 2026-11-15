@@ -1,0 +1,279 @@
+﻿Couche,Fichier_ou_table,Feuille,Colonne,Type,Cle_primaire,Reference,Nullable,Description
+DWH,dim_Annee,,AnneeKey,INTEGER,True,,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,dim_Annee,,Annee,INTEGER,False,,False,Libelle ou attribut de dim_Annee.
+DWH,dim_Categorie,,CategorieKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Categorie,,Categorie,TEXT,False,,False,Libelle ou attribut de dim_Categorie.
+DWH,dim_ClasseRestaurant,,ClasseRestaurantKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_ClasseRestaurant,,ClasseRestaurant,TEXT,False,,False,Libelle ou attribut de dim_ClasseRestaurant.
+DWH,dim_Devise,,DeviseKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Devise,,Devise,TEXT,False,,False,Libelle ou attribut de dim_Devise.
+DWH,dim_Gouvernorat,,GouvernoratKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Gouvernorat,,Gouvernorat,TEXT,False,,False,Libelle ou attribut de dim_Gouvernorat.
+DWH,dim_Indicateur,,IndicateurKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Indicateur,,Indicateur,TEXT,False,,False,Libelle ou attribut de dim_Indicateur.
+DWH,dim_Indicateur,,Unite,TEXT,False,,False,Libelle ou attribut de dim_Indicateur.
+DWH,dim_Licence,,LicenceKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Licence,,Licence,TEXT,False,,False,Libelle ou attribut de dim_Licence.
+DWH,dim_Marche,,MarcheKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Marche,,Marche,TEXT,False,,False,Libelle ou attribut de dim_Marche.
+DWH,dim_Marche,,Type,TEXT,False,,False,Libelle ou attribut de dim_Marche.
+DWH,dim_Mois,,MoisKey,INTEGER,True,,False,Cle du mois AAAAMM.
+DWH,dim_Mois,,Date,TEXT,False,,False,"Premier jour du mois, utilise comme repere mensuel."
+DWH,dim_Mois,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,dim_Mois,,Mois,INTEGER,False,,False,Libelle ou attribut de dim_Mois.
+DWH,dim_Mois,,MoisNom,TEXT,False,,False,Libelle ou attribut de dim_Mois.
+DWH,dim_Mois,,Trimestre,INTEGER,False,,False,Libelle ou attribut de dim_Mois.
+DWH,dim_Region,,RegionKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Region,,Region,TEXT,False,,False,Libelle ou attribut de dim_Region.
+DWH,dim_Saison,,SaisonKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Saison,,Saison,TEXT,False,,False,Libelle ou attribut de dim_Saison.
+DWH,dim_Site,,SiteKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,dim_Site,,Site,TEXT,False,,False,Libelle ou attribut de dim_Site.
+DWH,dim_Source,,SourceKey,INTEGER,True,,False,Cle de l'organisme et du fichier charge.
+DWH,dim_Source,,Organisme,TEXT,False,,False,Libelle ou attribut de dim_Source.
+DWH,dim_Source,,Fichier,TEXT,False,,False,Libelle ou attribut de dim_Source.
+DWH,dim_Source,,URL,TEXT,False,,False,Libelle ou attribut de dim_Source.
+DWH,dim_Source,,Extraction_originale,TEXT,False,,True,Libelle ou attribut de dim_Source.
+DWH,dim_Source,,Licence,TEXT,False,,True,Libelle ou attribut de dim_Source.
+DWH,dim_Source,,Note,TEXT,False,,False,Libelle ou attribut de dim_Source.
+DWH,etl_execution,,ExecutionKey,INTEGER,True,,False,Cle technique de la dimension correspondante.
+DWH,etl_execution,,Debut_UTC,TEXT,False,,False,Libelle ou attribut de etl_execution.
+DWH,etl_execution,,Version,TEXT,False,,False,Libelle ou attribut de etl_execution.
+DWH,etl_execution,,Statut,TEXT,False,,False,Libelle ou attribut de etl_execution.
+DWH,fact_agences,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_agences,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_agences,,RegionKey,INTEGER,False,dim_Region.RegionKey,False,Cle technique de la dimension correspondante.
+DWH,fact_agences,,LicenceKey,INTEGER,False,dim_Licence.LicenceKey,False,Cle technique de la dimension correspondante.
+DWH,fact_agences,,Agences,REAL,False,,True,"Nombre d'agences pour une annee, une region et une licence."
+DWH,fact_agences,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_agences,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_agences,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_arrivees,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_arrivees,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_arrivees,,MarcheKey,INTEGER,False,dim_Marche.MarcheKey,False,Cle technique de la dimension correspondante.
+DWH,fact_arrivees,,Arrivees,REAL,False,,True,Arrivees aux frontieres des non-residents.
+DWH,fact_arrivees,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_arrivees,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_arrivees,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_arrivees_saison,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_arrivees_saison,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_arrivees_saison,,MarcheKey,INTEGER,False,dim_Marche.MarcheKey,False,Cle technique de la dimension correspondante.
+DWH,fact_arrivees_saison,,Arrivees,REAL,False,,True,Arrivees aux frontieres des non-residents.
+DWH,fact_arrivees_saison,,SaisonKey,INTEGER,False,dim_Saison.SaisonKey,False,Cle technique de la dimension correspondante.
+DWH,fact_arrivees_saison,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_arrivees_saison,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_arrivees_saison,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_capacite,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_capacite,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_capacite,,RegionKey,INTEGER,False,dim_Region.RegionKey,False,Cle technique de la dimension correspondante.
+DWH,fact_capacite,,CategorieKey,INTEGER,False,dim_Categorie.CategorieKey,False,Cle technique de la dimension correspondante.
+DWH,fact_capacite,,Lits,REAL,False,,True,Nombre de lits du stock hotelier 2023.
+DWH,fact_capacite,,Etablissements,REAL,False,,True,Nombre d'etablissements hoteliers du stock 2023.
+DWH,fact_capacite,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_capacite,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_capacite,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_change,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_change,,MoisKey,INTEGER,False,dim_Mois.MoisKey,False,Cle du mois AAAAMM.
+DWH,fact_change,,DeviseKey,INTEGER,False,dim_Devise.DeviseKey,False,Cle technique de la dimension correspondante.
+DWH,fact_change,,Taux_TND,REAL,False,,True,Nombre de dinars pour une unite de devise.
+DWH,fact_change,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_change,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_change,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_duree_marche,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_duree_marche,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_duree_marche,,MarcheKey,INTEGER,False,dim_Marche.MarcheKey,False,Cle technique de la dimension correspondante.
+DWH,fact_duree_marche,,IndicateurKey,INTEGER,False,dim_Indicateur.IndicateurKey,False,Cle technique de la dimension correspondante.
+DWH,fact_duree_marche,,Valeur,REAL,False,,True,Valeur du controle source ou de l'indicateur de duree selon la table et l'unite.
+DWH,fact_duree_marche,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_duree_marche,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_duree_marche,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_investissements,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_investissements,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_investissements,,GouvernoratKey,INTEGER,False,dim_Gouvernorat.GouvernoratKey,False,Cle technique de la dimension correspondante.
+DWH,fact_investissements,,Capacite_lits,REAL,False,,True,"Capacite associee aux investissements, distincte du stock hotelier."
+DWH,fact_investissements,,Hebergement_kTND,REAL,False,,True,Investissement hebergement en milliers de dinars.
+DWH,fact_investissements,,Animation_kTND,REAL,False,,True,Investissement animation en milliers de dinars.
+DWH,fact_investissements,,Total_kTND,REAL,False,,True,Investissement total en milliers de dinars.
+DWH,fact_investissements,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_investissements,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_investissements,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_nuitees,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_nuitees,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_nuitees,,MarcheKey,INTEGER,False,dim_Marche.MarcheKey,False,Cle technique de la dimension correspondante.
+DWH,fact_nuitees,,Nuitees,REAL,False,,True,Nuitees hotelieres ; segment resident distinct.
+DWH,fact_nuitees,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_nuitees,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_nuitees,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_occupation,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_occupation,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_occupation,,RegionKey,INTEGER,False,dim_Region.RegionKey,False,Cle technique de la dimension correspondante.
+DWH,fact_occupation,,CategorieKey,INTEGER,False,dim_Categorie.CategorieKey,False,Cle technique de la dimension correspondante.
+DWH,fact_occupation,,Taux_pct,REAL,False,,True,Taux publie en pourcentage. NULL si absent ou mis en quarantaine.
+DWH,fact_occupation,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_occupation,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_occupation,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_previsions,,MoisKey,INTEGER,True,dim_Mois.MoisKey,False,Cle du mois AAAAMM.
+DWH,fact_previsions,,Modele,TEXT,True,,False,Nom du modele de prevision a ajouter en S5.
+DWH,fact_previsions,,Cible,TEXT,True,,False,Nom de l'indicateur prevu.
+DWH,fact_previsions,,Valeur_MDT,REAL,False,,False,Prevision future en MDT ; aucune ligne generee en S4.
+DWH,fact_previsions,,Borne_basse,REAL,False,,True,Borne inferieure d'un intervalle de prevision futur.
+DWH,fact_previsions,,Borne_haute,REAL,False,,True,Borne superieure d'un intervalle de prevision futur.
+DWH,fact_previsions,,Date_entrainement,TEXT,False,,False,Horodatage de l'entrainement du futur modele.
+DWH,fact_recettes,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_recettes,,MoisKey,INTEGER,False,dim_Mois.MoisKey,False,Cle du mois AAAAMM.
+DWH,fact_recettes,,Recettes_MDT,REAL,False,,True,Recettes touristiques observees en millions de dinars tunisiens.
+DWH,fact_recettes,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_recettes,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_recettes,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_restaurants,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_restaurants,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_restaurants,,RegionKey,INTEGER,False,dim_Region.RegionKey,False,Cle technique de la dimension correspondante.
+DWH,fact_restaurants,,ClasseRestaurantKey,INTEGER,False,dim_ClasseRestaurant.ClasseRestaurantKey,False,Cle technique de la dimension correspondante.
+DWH,fact_restaurants,,Restaurants,REAL,False,,True,Nombre de restaurants touristiques pour une region et une classe.
+DWH,fact_restaurants,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_restaurants,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_restaurants,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,fact_sites,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,fact_sites,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,fact_sites,,SiteKey,INTEGER,False,dim_Site.SiteKey,False,Cle technique de la dimension correspondante.
+DWH,fact_sites,,Visiteurs,REAL,False,,True,"Nombre de visites dans le site ou musee pendant l'annee, non necessairement des personnes uniques."
+DWH,fact_sites,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,fact_sites,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,fact_sites,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+DWH,ref_controles_source,,ObservationKey,INTEGER,True,,False,"Cle technique d'une observation, sans signification metier."
+DWH,ref_controles_source,,AnneeKey,INTEGER,False,dim_Annee.AnneeKey,False,Annee de l'observation. Une valeur annuelle n'est pas une date mensuelle.
+DWH,ref_controles_source,,Libelle,TEXT,False,,False,Libelle ou attribut de ref_controles_source.
+DWH,ref_controles_source,,Valeur,REAL,False,,True,Valeur du controle source ou de l'indicateur de duree selon la table et l'unite.
+DWH,ref_controles_source,,Unite,TEXT,False,,False,Libelle ou attribut de ref_controles_source.
+DWH,ref_controles_source,,SourceKey,INTEGER,False,dim_Source.SourceKey,False,Cle de l'organisme et du fichier charge.
+DWH,ref_controles_source,,SourceFeuille,TEXT,False,,False,Nom exact de la feuille source ou BCT_HTML.
+DWH,ref_controles_source,,SourceLigne,INTEGER,False,,False,Ligne Excel (entete comprise) ou position de la ligne de taux HTML.
+Source,Source2_BCT_change.xlsx,Source2_BCT_Change,DateKey,object,,,False,"Cle source du mois ; AAAAMM dans l'echantillon, AAAA-MM dans le classeur BCT."
+Source,Source2_BCT_change.xlsx,Source2_BCT_Change,Annee,int64,,,False,Annee civile de l'observation.
+Source,Source2_BCT_change.xlsx,Source2_BCT_Change,Mois,int64,,,False,Nom du mois de l'observation mensuelle.
+Source,Source2_BCT_change.xlsx,Source2_BCT_Change,Date_fin_mois,datetime64[ns],,,False,Dernier jour du mois de reference BCT.
+Source,Source2_BCT_change.xlsx,Source2_BCT_Change,EUR_TND_moyen,float64,,,False,"Taux moyen mensuel, dinars tunisiens pour 1 EUR."
+Source,Source2_BCT_change.xlsx,Source2_BCT_Change,USD_TND_moyen,float64,,,False,"Taux moyen mensuel, dinars tunisiens pour 1 USD."
+Source,Source2_BCT_change.xlsx,Source2_BCT_Change,Source,object,,,False,Organisme ou reference du tableau indique par le fichier fourni.
+Source,Source2_BCT_change.xlsx,Fiche_collecte,Rubrique,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,Source2_BCT_change.xlsx,Fiche_collecte,Description,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,pwer bi base de donnes.xlsx,KPI_2023,Indicateur,object,,,False,Nom de la mesure ; verifier son unite et sa population avant toute aggregation.
+Source,pwer bi base de donnes.xlsx,KPI_2023,Valeur,float64,,,False,"Valeur de l'indicateur nomme dans la meme ligne, avec l'unite de la table ou la colonne Unite."
+Source,pwer bi base de donnes.xlsx,KPI_2023,Unite,object,,,False,Unite originale de la valeur. Certains libelles ambigus sont signales dans la documentation.
+Source,pwer bi base de donnes.xlsx,KPI_2023,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,KPI_2023,Source,object,,,False,Organisme ou reference du tableau indique par le fichier fourni.
+Source,pwer bi base de donnes.xlsx,Arrivees_Nationalite,Nationalite,object,,,False,"Marche ou groupe source. Peut aussi contenir un total, un sous-total ou une ligne de pourcentage."
+Source,pwer bi base de donnes.xlsx,Arrivees_Nationalite,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,Arrivees_Nationalite,Nombre_arrivees,float64,,,False,Arrivees des non-residents aux frontieres ; exclure les lignes de pourcentage et sous-totaux pour sommer.
+Source,pwer bi base de donnes.xlsx,Arrivees_Annuel_Large,Nationalite,object,,,False,"Marche ou groupe source. Peut aussi contenir un total, un sous-total ou une ligne de pourcentage."
+Source,pwer bi base de donnes.xlsx,Arrivees_Annuel_Large,Arrivees_2021,float64,,,False,Nombre d'arrivees de l'annee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Arrivees_Annuel_Large,Arrivees_2022,float64,,,False,Nombre d'arrivees de l'annee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Arrivees_Annuel_Large,Arrivees_2023,float64,,,False,Nombre d'arrivees de l'annee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Arrivees_Annuel_Large,Variation_pct_2023_2022,float64,,,True,"Variation 2023/2022 publiee en points de pourcentage de croissance, non additive."
+Source,pwer bi base de donnes.xlsx,Nuitees_Nationalite,Nationalite,object,,,False,"Marche ou groupe source. Peut aussi contenir un total, un sous-total ou une ligne de pourcentage."
+Source,pwer bi base de donnes.xlsx,Nuitees_Nationalite,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,Nuitees_Nationalite,Nombre_nuitees,float64,,,False,"Nuitees hotelieres, avec sous-totaux, % et segment residents a distinguer."
+Source,pwer bi base de donnes.xlsx,Nuitees_Annuel_Large,Nationalite,object,,,False,"Marche ou groupe source. Peut aussi contenir un total, un sous-total ou une ligne de pourcentage."
+Source,pwer bi base de donnes.xlsx,Nuitees_Annuel_Large,Nuitees_2021,float64,,,False,Nombre de nuitees de l'annee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Nuitees_Annuel_Large,Nuitees_2022,float64,,,False,Nombre de nuitees de l'annee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Nuitees_Annuel_Large,Nuitees_2023,float64,,,False,Nombre de nuitees de l'annee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Nuitees_Annuel_Large,Variation_pct_2023_2022,float64,,,True,"Variation 2023/2022 publiee en points de pourcentage de croissance, non additive."
+Source,pwer bi base de donnes.xlsx,Recettes_Mensuelles,Mois,object,,,False,Nom du mois de l'observation mensuelle.
+Source,pwer bi base de donnes.xlsx,Recettes_Mensuelles,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,Recettes_Mensuelles,Recettes_touristiques_MDT,float64,,,False,Recettes mensuelles observees en millions de dinars tunisiens.
+Source,pwer bi base de donnes.xlsx,Recettes_Trimestrielles,Trimestre,object,,,False,Trimestre T1 a T4.
+Source,pwer bi base de donnes.xlsx,Recettes_Trimestrielles,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,Recettes_Trimestrielles,Recettes_MDT,float64,,,True,Recettes trimestrielles en millions de dinars. Ne pas ajouter aux valeurs mensuelles.
+Source,pwer bi base de donnes.xlsx,Capacite_Hoteliere,Region,object,,,False,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,pwer bi base de donnes.xlsx,Capacite_Hoteliere,Categorie_hebergement,object,,,False,Classe ou type d'hebergement ; varie entre etoiles et libelles selon la feuille.
+Source,pwer bi base de donnes.xlsx,Capacite_Hoteliere,Nombre_lits,int64,,,False,Stock de lits hoteliers du rapport 2023.
+Source,pwer bi base de donnes.xlsx,Capacite_Hoteliere,Nombre_etablissements,int64,,,False,Stock d'etablissements hoteliers du rapport 2023.
+Source,pwer bi base de donnes.xlsx,Investissements,Gouvernorat,object,,,False,"Gouvernorat tunisien concerne par l'investissement, ou ligne Total."
+Source,pwer bi base de donnes.xlsx,Investissements,Capacite_hoteliere_lits,float64,,,True,"Capacite associee aux investissements, pas le stock hotelier total."
+Source,pwer bi base de donnes.xlsx,Investissements,Invest_hebergement_milliers_DT,float64,,,True,"Investissement en hebergement, milliers de dinars tunisiens."
+Source,pwer bi base de donnes.xlsx,Investissements,Invest_animation_milliers_DT,float64,,,True,"Investissement en animation, milliers de dinars tunisiens."
+Source,pwer bi base de donnes.xlsx,Investissements,Invest_total_milliers_DT,int64,,,False,"Investissement total, milliers de dinars tunisiens."
+Source,pwer bi base de donnes.xlsx,Taux_Occupation,Categorie_hebergement,object,,,False,Classe ou type d'hebergement ; varie entre etoiles et libelles selon la feuille.
+Source,pwer bi base de donnes.xlsx,Taux_Occupation,Region,object,,,False,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,pwer bi base de donnes.xlsx,Taux_Occupation,Taux_occupation_pct,float64,,,True,"Taux d'occupation publie en pourcentage ; non additif, cellules vides a conserver."
+Source,pwer bi base de donnes.xlsx,Duree_Region,Region,object,,,False,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,pwer bi base de donnes.xlsx,Duree_Region,Duree_sejour_2021,float64,,,False,Duree de sejour en jours ; bloc regional ambigu conserve seulement dans la source.
+Source,pwer bi base de donnes.xlsx,Duree_Region,Duree_sejour_2022,float64,,,False,Duree de sejour en jours ; bloc regional ambigu conserve seulement dans la source.
+Source,pwer bi base de donnes.xlsx,Duree_Region,Duree_sejour_2023,float64,,,False,Duree de sejour en jours ; bloc regional ambigu conserve seulement dans la source.
+Source,pwer bi base de donnes.xlsx,Duree_Region,Ecart_jours_2023_2022,float64,,,True,"Ecart de duree 2023-2022 en jours ; deux blocs regionaux sans libelle, non charges."
+Source,pwer bi base de donnes.xlsx,Duree_Nationalite,Nationalite,object,,,False,"Marche ou groupe source. Peut aussi contenir un total, un sous-total ou une ligne de pourcentage."
+Source,pwer bi base de donnes.xlsx,Duree_Nationalite,Indicateur,object,,,False,Nom de la mesure ; verifier son unite et sa population avant toute aggregation.
+Source,pwer bi base de donnes.xlsx,Duree_Nationalite,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,Duree_Nationalite,Valeur,float64,,,False,"Valeur de l'indicateur nomme dans la meme ligne, avec l'unite de la table ou la colonne Unite."
+Source,pwer bi base de donnes.xlsx,Arrivees_Saison,Nationalite,object,,,False,"Marche ou groupe source. Peut aussi contenir un total, un sous-total ou une ligne de pourcentage."
+Source,pwer bi base de donnes.xlsx,Arrivees_Saison,Saison,object,,,False,Saison Haute_moyenne ou Basse telle que fournie par l'ONTT.
+Source,pwer bi base de donnes.xlsx,Arrivees_Saison,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,Arrivees_Saison,Arrivees,float64,,,True,Compte d'arrivees pour une saison ; lignes % et sous-totaux presentes dans la source.
+Source,pwer bi base de donnes.xlsx,Agences_Voyages,Region,object,,,False,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,pwer bi base de donnes.xlsx,Agences_Voyages,Licence,object,,,False,"Licence A, B ou Total pour les agences de voyages."
+Source,pwer bi base de donnes.xlsx,Agences_Voyages,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,Agences_Voyages,Nombre_agences,float64,,,True,"Nombre d'agences, selon annee, region et licence."
+Source,pwer bi base de donnes.xlsx,Restaurants,Region,object,,,False,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,pwer bi base de donnes.xlsx,Restaurants,3_fourchettes_luxe,float64,,,True,Nombre de restaurants pour la classe indiquee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Restaurants,3_fourchettes,float64,,,True,Nombre de restaurants pour la classe indiquee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Restaurants,2_fourchettes,float64,,,True,Nombre de restaurants pour la classe indiquee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Restaurants,1_fourchette,float64,,,True,Nombre de restaurants pour la classe indiquee dans le nom de colonne.
+Source,pwer bi base de donnes.xlsx,Restaurants,Total,int64,,,False,"Total source : controle des details, sans addition supplementaire."
+Source,pwer bi base de donnes.xlsx,Visiteurs_Sites,Site_musee,object,,,False,"Nom du site ou du musee, ou ligne TOTAL."
+Source,pwer bi base de donnes.xlsx,Visiteurs_Sites,Annee,int64,,,False,Annee civile de l'observation.
+Source,pwer bi base de donnes.xlsx,Visiteurs_Sites,Nombre_visiteurs,float64,,,True,Nombre de visites du site ou du musee ; blancs conserves comme absents.
+Source,pwer bi base de donnes.xlsx,LISEZ_MOI,Rubrique,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,pwer bi base de donnes.xlsx,LISEZ_MOI,Description,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,pwer bi base de donnes.xlsx,Schema_DWH,Table_Fait,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,pwer bi base de donnes.xlsx,Schema_DWH,Clés_dimensions,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,pwer bi base de donnes.xlsx,Schema_DWH,Mesures,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,pwer bi base de donnes.xlsx,Schema_DWH,Feuille_source,object,,,False,Nom de la feuille ayant alimente la base maitresse derivee.
+Source,pwer bi base de donnes.xlsx,Schema_DWH,Granularité,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,LISEZ_MOI,Feuille,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,LISEZ_MOI,Description,object,,,False,"Metadonnee descriptive de la feuille fournie, conservee pour contexte."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,LISEZ_MOI,Source,object,,,False,Organisme ou reference du tableau indique par le fichier fourni.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Recettes,DateKey,int64,,,False,"Cle source du mois ; AAAAMM dans l'echantillon, AAAA-MM dans le classeur BCT."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Recettes,Annee,int64,,,False,Annee civile de l'observation.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Recettes,Mois,object,,,False,Nom du mois de l'observation mensuelle.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Recettes,Mois_num,int64,,,False,"Numero du mois, de 1 a 12."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Recettes,Recettes_touristiques_MDT,float64,,,False,Recettes mensuelles observees en millions de dinars tunisiens.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Arrivees,Nationalite,object,,,False,"Marche ou groupe source. Peut aussi contenir un total, un sous-total ou une ligne de pourcentage."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Arrivees,Annee,int64,,,False,Annee civile de l'observation.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Arrivees,Nombre_arrivees,int64,,,False,Arrivees des non-residents aux frontieres ; exclure les lignes de pourcentage et sous-totaux pour sommer.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Capacite,Region,object,,,False,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Capacite,Categorie_hebergement,object,,,False,Classe ou type d'hebergement ; varie entre etoiles et libelles selon la feuille.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Capacite,Nombre_lits,int64,,,False,Stock de lits hoteliers du rapport 2023.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Capacite,Nombre_etablissements,int64,,,False,Stock d'etablissements hoteliers du rapport 2023.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Occupation,Categorie_hebergement,object,,,False,Classe ou type d'hebergement ; varie entre etoiles et libelles selon la feuille.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Occupation,Region,object,,,False,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Occupation,Taux_occupation_pct,float64,,,True,"Taux d'occupation publie en pourcentage ; non additif, cellules vides a conserver."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Investissements,Gouvernorat,object,,,False,"Gouvernorat tunisien concerne par l'investissement, ou ligne Total."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Investissements,Capacite_hoteliere_lits,float64,,,True,"Capacite associee aux investissements, pas le stock hotelier total."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Investissements,Invest_hebergement_milliers_DT,float64,,,True,"Investissement en hebergement, milliers de dinars tunisiens."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Investissements,Invest_animation_milliers_DT,float64,,,True,"Investissement en animation, milliers de dinars tunisiens."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Investissements,Invest_total_milliers_DT,int64,,,False,"Investissement total, milliers de dinars tunisiens."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Duree_Region,Region,object,,,False,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Duree_Region,Duree_sejour_2021,float64,,,False,Duree de sejour en jours ; bloc regional ambigu conserve seulement dans la source.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Duree_Region,Duree_sejour_2022,float64,,,False,Duree de sejour en jours ; bloc regional ambigu conserve seulement dans la source.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Duree_Region,Duree_sejour_2023,float64,,,False,Duree de sejour en jours ; bloc regional ambigu conserve seulement dans la source.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Duree_Region,Ecart_jours_2023_2022,float64,,,True,"Ecart de duree 2023-2022 en jours ; deux blocs regionaux sans libelle, non charges."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Sites,Site_musee,object,,,False,"Nom du site ou du musee, ou ligne TOTAL."
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Sites,Annee,int64,,,False,Annee civile de l'observation.
+Source,Echantillon_donnees_Tourisme_Tunisie.xlsx,Echantillon_Sites,Nombre_visiteurs,float64,,,True,Nombre de visites du site ou du musee ; blancs conserves comme absents.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,ID_observation,int64,,,False,"Identifiant de ligne de la base maitresse derivee, sans ajout d'une observation independante."
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Domaine,object,,,False,Domaine touristique de la base maitresse derivee.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Indicateur,object,,,False,Nom de la mesure ; verifier son unite et sa population avant toute aggregation.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Annee,float64,,,True,Annee civile de l'observation.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Periode,object,,,True,"Mois, trimestre ou cellule vide selon le grain original."
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Nationalite,object,,,True,"Marche ou groupe source. Peut aussi contenir un total, un sous-total ou une ligne de pourcentage."
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Region,object,,,True,Region touristique ou administrative selon la feuille ; les decoupages ne sont pas interchangeables.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Gouvernorat,object,,,True,"Gouvernorat tunisien concerne par l'investissement, ou ligne Total."
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Saison,object,,,True,Saison Haute_moyenne ou Basse telle que fournie par l'ONTT.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Categorie,object,,,True,Categorie transcrite dans la base maitresse.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Licence,object,,,True,"Licence A, B ou Total pour les agences de voyages."
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Site_ou_Musee,object,,,True,Nom transcrit du site ou du musee.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Valeur,float64,,,False,"Valeur de l'indicateur nomme dans la meme ligne, avec l'unite de la table ou la colonne Unite."
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Unite,object,,,False,Unite originale de la valeur. Certains libelles ambigus sont signales dans la documentation.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Feuille_source,object,,,False,Nom de la feuille ayant alimente la base maitresse derivee.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Page_source_PDF,object,,,False,Page indiquee lors de la transcription ; non verifiee par une extraction PDF locale.
+Source,Base_Maitresse_Tourisme_Tunisie.xlsx,Base_Maitresse,Commentaire,object,,,True,Note de transcription ou d'aggregation fournie.

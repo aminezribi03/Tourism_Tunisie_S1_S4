@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+config.local.json
+**/.pbi/
+outputs/
+powerbi/Tourisme.SemanticModel/model.bim
+powerbi/parametre_RootPath.txt
